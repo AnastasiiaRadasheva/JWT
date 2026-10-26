@@ -53,7 +53,7 @@ Kasutajad: `adriana` / `adriana123` (student), `anastasiia` / `anastasiia123` (a
 Käivitamine (PowerShell):
 
 ```powershell
-$env:JWT_SECRET = "pikk-juhuslik-võti"
+$env:JWT_SECRET = "siia-vähemalt-32-märgiline-juhuslik-võti"
 python app.py
 ```
 

@@ -1,16 +1,16 @@
 # Iseseisev töö: JWT mini-API (Flask + PyJWT)
 
-Notioni lehe tekst: `NOTION.md`.
+Notioni leht: [JWT – Anastasiia](https://app.notion.com/p/JWT-Anastasiia-402b3d43c5be8060b5bcf719d6501415)
 
 Lõpp-punktid:
 
 | Meetod | Tee | Kirjeldus |
 |---|---|---|
-| POST | `/login` | võtab `username` ja `password`, tagastab JWT (`sub`, `role`, `exp` = 5 min) |
+| POST | `/login` | võtab `username` ja `password`, tagastab JWT (`sub`, `name`, `role`, `exp` = 5 min) |
 | GET | `/profiil` | ainult kehtiva tokeniga, tagastab tokeni andmed |
 | GET | `/admin` | ainult kui `role == "admin"` |
 
-Vead: puuduv/vigane/aegunud token → **401**, õigused puuduvad → **403**.
+Vead: `Token puudub`, `Vigane token`, `Token on aegunud` → **401**, `Õigused puuduvad` → **403**.
 
 Testkasutajad:
 
@@ -25,19 +25,23 @@ Testkasutajad:
 pip install -r requirements.txt
 ```
 
-Salavõti antakse keskkonnamuutujaga `JWT_SECRET` (koodis seda pole).
+Salavõti antakse keskkonnamuutujaga `JWT_SECRET` (koodis seda pole). Võti peab olema vähemalt 32 tähemärki, muidu PyJWT annab hoiatuse. Juhusliku võtme saab nii:
+
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+```
 
 Windows PowerShell:
 
 ```powershell
-$env:JWT_SECRET = "mingi-pikk-juhuslik-salavõti"
+$env:JWT_SECRET = "siia-genereeritud-võti"
 python app.py
 ```
 
 Linux / macOS / Git Bash:
 
 ```bash
-export JWT_SECRET="mingi-pikk-juhuslik-salavõti"
+export JWT_SECRET="siia-genereeritud-võti"
 python app.py
 ```
 
