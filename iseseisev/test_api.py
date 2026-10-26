@@ -53,6 +53,8 @@ tests = [
     ("8. Admin admin-tokeniga", lambda: call("GET", "/admin", admin), 200),
     ("9. Admin ilma tokenita", lambda: call("GET", "/admin"), 401),
     ("10. Admin võltsitud tokeniga", lambda: call("GET", "/admin", forged), 401),
+    ("11. Admini sisselogimine", lambda: login("anastasiia", "anastasiia123"), 200),
+    ("12. Profiil admin-tokeniga", lambda: call("GET", "/profiil", admin), 200),
 ]
 
 for name, fn, expected in tests:
